@@ -8,6 +8,7 @@ from langchain.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import time
+from langchain_community.vectorstores import DocArrayInMemorySearch
 
 
 def get_api_key(api_key_path):
@@ -234,7 +235,8 @@ def clean_transcript(transcript):
         responses.append(clean_response)
         time_end = time.time()
         print(f"Chunk processed in {time_end - time_start:.2f} seconds")
-    return responses
+
+    return process_transcript(responses)
 
 
 def process_transcript(responses):

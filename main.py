@@ -13,6 +13,6 @@ df = pd.DataFrame()
 for channel in channels:
     channel_id, channel_name = extract_channel_id_and_name(download_html(channel))
     print(f"Processing channel: {channel_name}")
-    df = add_channel_videos(channel_id, api_key, num_vids=5, df=df)
+    df = add_channel_videos(channel_id, api_key, df=df)
 
 df.to_csv('videos_df.csv', index=False)
