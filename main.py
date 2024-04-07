@@ -7,7 +7,7 @@ import pandas as pd
 api_key = get_api_key(os.path.join('..', 'keys', 'VideoFinder', 'YouTubeAPIKey.txt'))
 
 # Example Usage
-channels = ["https://www.youtube.com/@juliensimonfr", "https://www.youtube.com/@sentdex"]
+channels = ["https://www.youtube.com/@TwoMinutePapers"]
 df = pd.DataFrame()
 
 for channel in channels:

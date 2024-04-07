@@ -1,4 +1,5 @@
 import re
+import tqdm
 from googleapiclient.discovery import build
 import urllib.request
 from youtube_transcript_api import YouTubeTranscriptApi
@@ -138,7 +139,7 @@ def add_channel_videos(channel_id, api_key, num_vids=None, df=None):
         num_vids = len(videos)
 
     print(f"Processing {num_vids} videos from channel ID: {channel_id}")
-    for video in videos[:num_vids]:
+    for video in tqdm.tqdm(videos[:num_vids]):
         video_id = video['snippet']['resourceId']['videoId']
         video_url = f"https://www.youtube.com/watch?v={video_id}"
         video_description_ini = video['snippet']['description']
