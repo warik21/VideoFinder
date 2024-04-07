@@ -9,7 +9,7 @@ from langchain.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import time
-from langchain_community.vectorstores import DocArrayInMemorySearch
+from sentence_transformers import SentenceTransformer
 
 
 def get_api_key(api_key_path):
@@ -262,3 +262,23 @@ def process_transcript(responses):
             # Handle cases where the model does not follow the format
             summary_parts.append("Summary extraction error: Unexpected response format.")
     return " ".join(summary_parts)
+
+
+def get_embedding(text: str, model: "SentenceTransformer") -> list[float]:
+    """
+    Get the embedding of a text using a SentenceTransformer model.
+
+    Args:
+        text: The text to get the embedding for.
+        model: The SentenceTransformer model to use for embedding.
+
+    Returns:
+        The embedding of the text as a list of floats.
+    """
+    if not text.strip():
+        print("Attempted to get embedding for empty text.")
+        return []
+
+    embedding = model.encode(text)
+
+    return embedding.tolist()
