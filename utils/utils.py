@@ -13,6 +13,7 @@ from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from typing import Optional
 import torch
+from transformers import DistilBertModel, DistilBertTokenizer
 
 
 def get_api_key(api_key_path):
@@ -178,6 +179,20 @@ def add_video_details(video: dict):
     return new_row, num_chunks
 
 
+def clean_text(text):
+    # Remove URLs
+    text = re.sub(r'https?://\S+', '', text)
+    # Remove social media handles
+    text = re.sub(r'@\w+', '', text)
+    # Remove hashtags
+    text = re.sub(r'#\S+', '', text)
+    # Remove common non-content phrases (customize as needed)
+    phrases_to_remove = ["Subscribe to my channel", "Follow me on"]
+    for phrase in phrases_to_remove:
+        text = text.replace(phrase, "")
+    return text
+
+
 def clean_description(description):
     """
     Removes non-important information from a video description, using an existing template.
@@ -313,6 +328,136 @@ def get_embedding(text: str, model: Optional[SentenceTransformer] = None) -> lis
     return model.encode(text)
 
 
+def get_embedding_bert(text: str, model: Optional[DistilBertModel] = None,
+                       tokenizer: Optional[DistilBertTokenizer] = None) -> list[float]:
+    """
+    Get the embedding of a text using a DistilBERT model. If no model is explicitly provided,
+    the function will initialize and use the default 'distilbert-base-uncased' model.
+
+    Args:
+        text (str): The text to get the embedding for.
+        model (Optional[DistilBertModel], optional): The DistilBERT model to use for embedding.
+            If not specified, the function initializes the 'distilbert-base-uncased' model by default.
+        tokenizer (Optional[DistilBertTokenizer], optional): The tokenizer to use for encoding the text.
+
+    Returns:
+        list[float]: The embedding of the text as a list of floats.
+
+    Example:
+        # Without specifying a model; uses the default model
+        embedding = get_embedding_bert("This is a sample text.")
+        print(embedding)
+
+        # With a specified model
+        custom_model = DistilBertModel.from_pretrained('your-custom-model-name')
+        embedding = get_embedding_bert("This is a sample text.", model=custom_model)
+        print(embedding)
+    """
+    if model is None:
+        model = DistilBertModel.from_pretrained('distilbert-base-uncased')
+    if not text.strip():
+        print("Attempted to get embedding for empty text.")
+        return []
+
+    inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True, max_length=512)
+    with torch.no_grad():  # Disable gradient calculation for inference
+        outputs = model(**inputs)
+    # Get the embeddings for the [CLS] token
+    embeddings = outputs.last_hidden_state[:, 0, :].numpy()
+
+    return embeddings.tolist()
+
+
+def get_joint_embedding_bert(name, description, transcript, model=None, tokenizer=None):
+    """
+    Generate a joint embedding for a video by combining the embeddings of its name, description, and transcript.
+
+    Args:
+        name (str): The name of the video.
+        description (str): The description of the video.
+        transcript (str): The transcript of the video.
+        model (Optional[SentenceTransformer]): SentenceTransformer model to use for embedding.
+        tokenizer (Optional[DistilBertTokenizer]): Tokenizer to use for encoding.
+        device (Optional[str]): Device to use for computation (e.g., 'cuda' or 'cpu').
+
+    Returns:
+        list[float]: The joint embedding of the video's name, description, and transcript as a list of floats.
+
+    Example:
+        # Example usage for a video with a specific name, description, and transcript
+        name = "Video Name"
+        description = "Video Description"
+        transcript = "Video Transcript"
+        joint_embedding = get_joint_embedding(name, description, transcript)
+        print(joint_embedding)  # This will print the joint embedding vector as a list of floats.
+    """
+    if model is None:
+        model = DistilBertModel.from_pretrained('distilbert-base-uncased')
+    if tokenizer is None:
+        tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
+
+    name_embedding = get_embedding_bert(name, model, tokenizer)
+    description_embedding = get_embedding_bert(description, model, tokenizer)
+    transcript_embedding = get_embedding_bert(transcript, model, tokenizer)
+
+    # Combine the embeddings
+    # TODO: add weights
+    joint_embedding = name_embedding + description_embedding + transcript_embedding
+    return joint_embedding
+
+
+def get_mean_embedding(text, batch_size=32, model=None, tokenizer=None, device=None):
+    """
+    Generate a mean embedding for the given text using DistilBERT.
+
+    Parameters:
+    - text (str): Input text to encode.
+    - batch_size (int): Size of batches to process the text.
+    - model (Optional[DistilBertModel]): DistilBERT model to use for encoding.
+    - tokenizer (Optional[DistilBertTokenizer]): Tokenizer to use for encoding.
+    - device (Optional[str]): Device to use for computation (e.g., 'cuda' or 'cpu').
+
+    Returns:
+    - numpy.ndarray: The mean embedding of the input text.
+    """
+    if model is None:
+        model = DistilBertModel.from_pretrained('distilbert-base-uncased')
+    if tokenizer is None:
+        tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
+    # Ensure the model and computation are on the same device (CPU or GPU)
+    model.to(device)
+
+    # Tokenize the text
+    inputs = tokenizer(text, return_tensors='pt', padding=True, truncation=True, max_length=128)
+
+    # Move tokens to the same device as model
+    inputs = {key: value.to(device) for key, value in inputs.items()}
+
+    # Initialize a container for all embeddings
+    all_embeddings = []
+
+    # Process text in batches
+    input_ids = inputs['input_ids']
+    attention_mask = inputs['attention_mask']
+    for i in range(0, input_ids.size(0), batch_size):
+        batch_input_ids = input_ids[i:i + batch_size]
+        batch_attention_mask = attention_mask[i:i + batch_size]
+        batch_inputs = {'input_ids': batch_input_ids, 'attention_mask': batch_attention_mask}
+
+        with torch.no_grad():
+            outputs = model(**batch_inputs)
+
+        # Extract embeddings and perform mean pooling
+        batch_embeddings = outputs.last_hidden_state.mean(dim=1)
+        all_embeddings.append(batch_embeddings)
+
+    # Concatenate all batch embeddings and compute the overall mean
+    all_embeddings = torch.cat(all_embeddings, dim=0)
+    mean_embedding = all_embeddings.mean(dim=0).cpu().numpy()
+
+    return mean_embedding
+
+
 def get_similarity_score(embedding1: list[float], embedding2: list[float]) -> float:
     """
     Get the similarity score between two embeddings using cosine similarity.
@@ -365,3 +510,53 @@ def weighted_embed_text(transcript: str, description: str, weight_transcript: fl
     # Applying weights
     weighted_embedding = (transcript_embedding * weight_transcript) + (description_embedding * weight_description)
     return weighted_embedding.tolist()
+
+
+def generate_prompt(video_title: str, video_description: str, video_transcript: str,
+                    max_length: int = 20) -> str:
+    """
+    Generate a set of prompts based on the video description and transcript for evaluating a language model.
+
+    This function generates prompts that can be used to evaluate a language model's performance on tasks related to the video content. The prompts are designed to test the model's ability to understand and respond to queries or requests based on the video description and transcript.
+
+    Args:
+        video_title (str): The title of the video
+        video_description (str): The description of the video
+        video_transcript (str): The transcript of the video
+        max_length (int, optional): The maximum length of each prompt. Defaults to 100.
+
+    Returns:
+        list[str]: A list of prompts generated based on the video description and transcript.
+
+    Example:
+        # Example usage for generating prompts
+        description = "This is the video description."
+        transcript = "This is the video transcript."
+        prompts = generate_prompt(description, transcript, 100)
+        print(prompts)  # This will print a list of prompts based on the video content.
+    """
+    # Define the template for generating prompts
+    template = """
+    Imagine you're exploring a digital library of videos and are interested in topics covered in the video below. 
+    Using the title, description and transcript provided, craft a general user-like query that someone might use when searching 
+    for a video on a broader topic. Start your query with 'A video about' and ensure it captures the overarching themes 
+    or general ideas rather than specific details. Aim for a query that could help someone decide if this video aligns 
+    with their general interest in a subject.
+
+    Title: {title}
+    Description: {description}
+    Transcript: {transcript}
+    """
+
+    prompt = PromptTemplate.from_template(template)
+    prompt.format(title=video_title,transcript=video_transcript, description=video_description)
+
+    chat_llm = ChatOpenAI(temperature=0, base_url="http://localhost:1234/v1",
+                          api_key="not-needed", max_tokens=max_length)
+    chain = prompt | chat_llm
+
+    generated_prompt = chain.invoke({"transcript": video_transcript,
+                                     "description": video_description,
+                                     "title": video_title})
+
+    return generated_prompt.content
