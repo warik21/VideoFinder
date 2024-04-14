@@ -325,7 +325,7 @@ def get_embedding(text: str, model: Optional[SentenceTransformer] = None) -> lis
     device = "cuda:0" if torch.cuda.is_available() else "cpu"
     model.to(device)
 
-    return model.encode(text)
+    return model.encode(text).reshape(1, -1)
 
 
 def get_embedding_bert(text: str, model: Optional[DistilBertModel] = None,
@@ -355,6 +355,8 @@ def get_embedding_bert(text: str, model: Optional[DistilBertModel] = None,
     """
     if model is None:
         model = DistilBertModel.from_pretrained('distilbert-base-uncased')
+    if tokenizer is None:
+        tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
     if not text.strip():
         print("Attempted to get embedding for empty text.")
         return []
@@ -365,7 +367,7 @@ def get_embedding_bert(text: str, model: Optional[DistilBertModel] = None,
     # Get the embeddings for the [CLS] token
     embeddings = outputs.last_hidden_state[:, 0, :].numpy()
 
-    return embeddings.tolist()
+    return embeddings.reshape(1, -1)
 
 
 def get_joint_embedding_bert(name, description, transcript, model=None, tokenizer=None):
@@ -378,7 +380,6 @@ def get_joint_embedding_bert(name, description, transcript, model=None, tokenize
         transcript (str): The transcript of the video.
         model (Optional[SentenceTransformer]): SentenceTransformer model to use for embedding.
         tokenizer (Optional[DistilBertTokenizer]): Tokenizer to use for encoding.
-        device (Optional[str]): Device to use for computation (e.g., 'cuda' or 'cpu').
 
     Returns:
         list[float]: The joint embedding of the video's name, description, and transcript as a list of floats.
@@ -402,8 +403,9 @@ def get_joint_embedding_bert(name, description, transcript, model=None, tokenize
 
     # Combine the embeddings
     # TODO: add weights
-    joint_embedding = name_embedding + description_embedding + transcript_embedding
-    return joint_embedding
+    joint_embedding = 0.4 * name_embedding + 0.3 * description_embedding + 0.3 * transcript_embedding
+    # TODO: Figure out why it returns a nested list [embedding] instead of just the embedding
+    return joint_embedding[0].reshape(1,-1)
 
 
 def get_mean_embedding(text, batch_size=32, model=None, tokenizer=None, device=None):
@@ -425,6 +427,8 @@ def get_mean_embedding(text, batch_size=32, model=None, tokenizer=None, device=N
     if tokenizer is None:
         tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
     # Ensure the model and computation are on the same device (CPU or GPU)
+    if device is None:
+        device = "cuda:0" if torch.cuda.is_available() else "cpu"
     model.to(device)
 
     # Tokenize the text
@@ -455,7 +459,80 @@ def get_mean_embedding(text, batch_size=32, model=None, tokenizer=None, device=N
     all_embeddings = torch.cat(all_embeddings, dim=0)
     mean_embedding = all_embeddings.mean(dim=0).cpu().numpy()
 
-    return mean_embedding
+    return mean_embedding.reshape(1, -1)
+
+
+def get_joint_embedding(name: str, description: str, transcript: str, model=None) -> list[float]:
+    """
+    Generate a joint embedding for a video by combining the embeddings of its name, description, and transcript.
+
+    Args:
+        name (str): The name of the video.
+        description (str): The description of the video.
+        transcript (str): The transcript of the video.
+        model (Optional[SentenceTransformer]): SentenceTransformer model to use for embedding.
+
+    Returns:
+        list[float]: The joint embedding of the video's name, description, and transcript as a list of floats.
+
+    Example:
+        # Example usage for a video with a specific name, description, and transcript
+        name = "Video Name"
+        description = "Video Description"
+        transcript = "Video Transcript"
+        joint_embedding = get_joint_embedding(name, description, transcript)
+        print(joint_embedding)  # This will print the joint embedding vector as a list of floats.
+    """
+    if model is None:
+        model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+
+    name_embedding = get_embedding(name, model)
+    description_embedding = get_embedding(description, model)
+    transcript_embedding = get_embedding(transcript, model)
+
+    # Combine the embeddings
+    joint_embedding = 0.4 * name_embedding + 0.3 * description_embedding + 0.3 * transcript_embedding
+    return joint_embedding.reshape(1, -1)
+
+
+def get_joint_mean_embedding(name: str, description: str, transcript: str, model=None,
+                             tokenizer=None, device=None) -> list[float]:
+    """
+    Generate a joint mean embedding for a video by combining the mean embeddings of its name, description, and transcript.
+
+    Args:
+        name (str): The name of the video.
+        description (str): The description of the video.
+        transcript (str): The transcript of the video.
+        model (Optional[DistilBertModel]): DistilBERT model to use for encoding.
+        tokenizer (Optional[DistilBertTokenizer]): Tokenizer to use for encoding.
+        device (Optional[str]): Device to use for computation (e.g., 'cuda' or 'cpu').
+
+    Returns:
+        list[float]: The joint mean embedding of the video's name, description, and transcript as a list of floats.
+
+    Example:
+        # Example usage for a video with a specific name, description, and transcript
+        name = "Video Name"
+        description = "Video Description"
+        transcript = "Video Transcript"
+        joint_embedding = get_joint_mean_embedding(name, description, transcript)
+        print(joint_embedding)  # This will print the joint mean embedding vector as a list of floats.
+    """
+    if model is None:
+        model = DistilBertModel.from_pretrained('distilbert-base-uncased')
+    if tokenizer is None:
+        tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
+    if device is None:
+        device = "cuda:0" if torch.cuda.is_available() else "cpu"
+
+    name_embedding = get_mean_embedding(name, model=model, tokenizer=tokenizer, device=device)
+    description_embedding = get_mean_embedding(description, model=model, tokenizer=tokenizer, device=device)
+    transcript_embedding = get_mean_embedding(transcript, model=model, tokenizer=tokenizer, device=device)
+
+    # Combine the embeddings
+    joint_embedding = 0.4 * name_embedding + 0.3 * description_embedding + 0.3 * transcript_embedding
+    return joint_embedding.reshape(1, -1)
 
 
 def get_similarity_score(embedding1: list[float], embedding2: list[float]) -> float:
@@ -549,7 +626,7 @@ def generate_prompt(video_title: str, video_description: str, video_transcript: 
     """
 
     prompt = PromptTemplate.from_template(template)
-    prompt.format(title=video_title,transcript=video_transcript, description=video_description)
+    prompt.format(title=video_title, transcript=video_transcript, description=video_description)
 
     chat_llm = ChatOpenAI(temperature=0, base_url="http://localhost:1234/v1",
                           api_key="not-needed", max_tokens=max_length)
