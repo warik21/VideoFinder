@@ -117,3 +117,65 @@ def generate_similarities_df(df: pd.DataFrame, path: str, video_embeddings_bert:
                             'mean_bert': correct_matches_mean_bert}
 
     return similarities_df, correct_matches_dict
+
+
+def generate_df(channels: list[str], path: str) -> None:
+    """
+    Generate a dataframe with videos data from a list of channels
+    
+    Args:
+        channels: list[str] - list of channel urls
+        path: str - path to save the new csv file
+        
+    Returns:
+        None
+    """
+    # api_key
+    api_key = get_api_key(os.path.join('..\..', 'keys', 'VideoFinder', 'YouTubeAPIKey.txt'))
+
+    # Example Usage
+    channels = ["https://www.youtube.com/@TwoMinutePapers"]
+    df = pd.DataFrame()
+
+    for channel in channels:
+        channel_id, channel_name = extract_channel_id_and_name(download_html(channel))
+        print(f"Processing channel: {channel_name}")
+        df = add_channel_videos(channel_id, api_key, df=df)
+
+    df.to_csv(path, index=False)
+
+
+def generate_embeddings_hf_df(df: pd.DataFrame, path: str, model: SentenceTransformer = SentenceTransformer('all-MiniLM-L6-v2')) -> pd.DataFrame:
+    """
+    Generate embeddings for each video in the dataframe and save them to a new csv file
+
+    Args:
+        df: pd.DataFrame - dataframe with videos data
+        path: str - path to save the new csv file
+
+    Returns:
+        embeddings_df: pd.DataFrame - dataframe with video names and embeddings
+    """
+    # Calculate embeddings for each video
+    video_names = []
+
+    embeddings_df = pd.DataFrame(columns=['video_name', 'title_embedding', 'desc_embedding', 
+                                          'transcript_embedding', 'prompt_embedding', 'label'])
+    # Populate lists with video names and embeddings
+    for i in tqdm.tqdm(range(len(df.index))):
+        video_name = df.iloc[i]['video_name']
+        video_description = df.iloc[i]['video_description']
+        video_transcript = df.iloc[i]['video_transcript']
+        prompt_text = df.iloc[i]['prompt']
+
+        video_names.append(video_name)
+        title_embedding = get_embedding(video_name, model)
+        desc_embedding = get_embedding(video_description, model)
+        transcript_embedding = get_embedding(video_transcript, model)
+        prompt_embedding = get_embedding(prompt_text, model)
+
+        # Save embeddings to new df
+        embeddings_df.loc[i] = [video_names[i], title_embedding, desc_embedding, transcript_embedding, prompt_embedding, i]
+
+    embeddings_df.to_csv(path, index=False)
+    return embeddings_df
