@@ -7,6 +7,7 @@ import sys
 
 sys.path.append(os.path.abspath('../../'))
 from utils.utils import *
+from utils.old_utils import *
 
 
 def generate_embeddings_df(df: pd.DataFrame, path: str) -> tuple[list, list, list]:
