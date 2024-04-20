@@ -16,10 +16,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from typing import Optional
 import torch
 from transformers import DistilBertModel, DistilBertTokenizer
-import sys
-import os
-sys.path.append(os.path.abspath('../../'))
-from utils.utils import get_joint_embedding, get_joint_mean_embedding, get_mean_embedding, get_embedding_bert
+
 
 def get_joint_mean_embedding(name: str, description: str, transcript: str, model=None,
                              tokenizer=None, device=None) -> list[float]:

@@ -145,14 +145,14 @@ def add_channel_videos(channel_id, api_key, num_vids=None, df=None):
     print(f"Processing {num_vids} videos from channel ID: {channel_id}")
     for video in tqdm.tqdm(videos[:num_vids]):
         start = time.time()
-        new_row, num_chunks = add_video_details(video)
+        new_row = add_video_details(video)
         df = df._append(new_row, ignore_index=True)
         end = time.time()
-        print(f"Processed video in {end - start:.2f} seconds. Transcript split into {num_chunks} chunks.")
+        print(f"Processed video in {end - start:.2f} seconds.")
     return df
 
 
-def add_video_details(video: dict) -> tuple[dict, int]:
+def add_video_details(video: dict) -> dict:
     """
     Adds video details to a dictionary, processing the video's description and transcript.
 
@@ -173,8 +173,7 @@ def add_video_details(video: dict) -> tuple[dict, int]:
     summarized_description = summarize_text(clean_description, "description")
     
     # Retrieve and process transcript
-    raw_transcript = get_video_transcript(video_id)  # Assuming this function fetches the transcript
-    clean_transcript = clean_text(raw_transcript)
+    clean_transcript = clean_text(get_video_transcript(video_id))
     summarized_transcript = summarize_text(clean_transcript, "transcript")
     
     # Assuming weighted_embed_text is updated or replaced to handle embeddings
