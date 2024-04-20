@@ -120,7 +120,7 @@ def generate_similarities_df(df: pd.DataFrame, path: str, video_embeddings_bert:
     return similarities_df, correct_matches_dict
 
 
-def generate_df(channels: list[str], path: str) -> None:
+def generate_df(channels: list[str], path: str, num_videos=None) -> None:
     """
     Generate a dataframe with videos data from a list of channels
     
@@ -132,7 +132,7 @@ def generate_df(channels: list[str], path: str) -> None:
         None
     """
     # api_key
-    api_key = get_api_key(os.path.join('..\..', 'keys', 'VideoFinder', 'YouTubeAPIKey.txt'))
+    api_key = get_api_key(os.path.join('../', 'keys', 'VideoFinder', 'YouTubeAPIKey.txt'))
 
     # Example Usage
     channels = ["https://www.youtube.com/@TwoMinutePapers"]
@@ -141,7 +141,7 @@ def generate_df(channels: list[str], path: str) -> None:
     for channel in channels:
         channel_id, channel_name = extract_channel_id_and_name(download_html(channel))
         print(f"Processing channel: {channel_name}")
-        df = add_channel_videos(channel_id, api_key, df=df)
+        df = add_channel_videos(channel_id, api_key, df=df, num_vids=num_videos)
 
     df.to_csv(path, index=False)
 
