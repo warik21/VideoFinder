@@ -4,10 +4,8 @@ from tqdm import tqdm
 import numpy as np
 import os
 import sys
-
-sys.path.append(os.path.abspath('../../'))
-from utils.utils import *
-from utils.old_utils import *
+from utils import *
+from old_utils import *
 
 
 def generate_embeddings_df(df: pd.DataFrame, path: str) -> tuple[list, list, list]:
@@ -120,7 +118,7 @@ def generate_similarities_df(df: pd.DataFrame, path: str, video_embeddings_bert:
     return similarities_df, correct_matches_dict
 
 
-def generate_df(channels: list[str], path: str, num_videos=None) -> None:
+def generate_df(channels: list[str], path: str, num_videos=None, return_df=False) -> pd.DataFrame:
     """
     Generate a dataframe with videos data from a list of channels
     
@@ -130,12 +128,13 @@ def generate_df(channels: list[str], path: str, num_videos=None) -> None:
         
     Returns:
         None
+    
+    Example:
+        generate_df(channels=['https://www.youtube.com/@TwoMinutePapers'], path='csvs/testing_df.csv', num_videos=10)
     """
     # api_key
     api_key = get_api_key(os.path.join('../', 'keys', 'VideoFinder', 'YouTubeAPIKey.txt'))
 
-    # Example Usage
-    channels = ["https://www.youtube.com/@TwoMinutePapers"]
     df = pd.DataFrame()
 
     for channel in channels:
@@ -144,6 +143,8 @@ def generate_df(channels: list[str], path: str, num_videos=None) -> None:
         df = add_channel_videos(channel_id, api_key, df=df, num_vids=num_videos)
 
     df.to_csv(path, index=False)
+    if return_df:
+        return df
 
 
 def generate_embeddings_hf_df(df: pd.DataFrame, path: str, model: SentenceTransformer = SentenceTransformer('all-MiniLM-L6-v2')) -> pd.DataFrame:
