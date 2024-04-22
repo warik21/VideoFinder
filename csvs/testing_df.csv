@@ -1,5 +1,5 @@
 video_url,video_description,video_transcript,video_name,channel_name,embedding
-https://www.youtube.com/watch?v=jWlc8e4gzyA,A video featuring Devin discussing simulations that look remarkably realistic. The content is related to simulations published in Nature Physics. The discussion is based on a free paper available to download. The video acknowledges the generous support of Patreon patrons who contribute to the creation of Two Minute Papers.,Summary extraction error: Unexpected response format.,GPT-4 Just Got Supercharged!,Two Minute Papers,"[[-9.73975658e-02 -1.25695951e-05  7.35740270e-03  2.66933255e-02
+https://www.youtube.com/watch?v=jWlc8e4gzyA,A video showcasing Devin exploring the Tldraw app and simulating simulations that resemble real-life appearances. The video features explanations and insights from the research. The video is presented by Károly Zsolnai-Fehér and Felícia Zsolnai-Fehér.,Summary extraction error: Unexpected response format.,GPT-4 Just Got Supercharged!,Two Minute Papers,"[[-9.73975658e-02 -1.25695951e-05  7.35740270e-03  2.66933255e-02
    4.20950390e-02 -8.07589740e-02  6.67098258e-03  4.34314497e-02
   -5.61080724e-02 -3.59974382e-03 -5.27817011e-02 -1.01480950e-02
   -4.66154180e-02  5.21031022e-02 -1.80154499e-02 -2.24951208e-02
@@ -95,7 +95,7 @@ https://www.youtube.com/watch?v=jWlc8e4gzyA,A video featuring Devin discussing s
   -3.67636904e-02  2.15282012e-02  6.21627495e-02  6.35616779e-02
   -1.60063729e-02 -6.31324016e-03 -1.80094745e-02 -5.03636710e-03
    1.73996687e-02 -1.59830414e-03 -6.60664365e-02  2.97044292e-02]]"
-https://www.youtube.com/watch?v=CyIqd_HR6rY,"A paper titled ""Live 3D Portrait: Real-Time Radiance Fields for Single-Image Portrait View Synthesis"" is available for free. The paper explores simulations that look remarkably similar to reality. The work is based on the paper ""Fully Connected"" and is available at the conference proceedings website. The paper acknowledges the support of generous Patreon supporters.",Summary extraction error: Unexpected response format.,"NVIDIA’s AI Puts You In a Video Game 75,000x Faster!",Two Minute Papers,"[[-5.23020551e-02  2.12712139e-02 -9.46051348e-03 -4.15143929e-02
+https://www.youtube.com/watch?v=CyIqd_HR6rY,"A paper titled ""Live 3D Portrait: Real-Time Radiance Fields for Single-Image Portrait View Synthesis"" is available for free. The paper explores simulations that create photo-realistic portraits by using radiance fields. The research team thanks their generous Patreon supporters for making Two Minute Papers possible.",Summary extraction error: Unexpected response format.,"NVIDIA’s AI Puts You In a Video Game 75,000x Faster!",Two Minute Papers,"[[-5.23020551e-02  2.12712139e-02 -9.46051348e-03 -4.15143929e-02
    3.59055586e-02 -4.84446064e-02 -4.44208682e-02 -2.55029332e-02
    1.16358232e-02  4.10174653e-02 -3.33973840e-02 -4.34296392e-02
   -1.19589958e-02 -5.06055262e-03  8.35972000e-03 -1.94067173e-02
@@ -191,7 +191,7 @@ https://www.youtube.com/watch?v=CyIqd_HR6rY,"A paper titled ""Live 3D Portrait: 
    5.90486126e-03  5.11482209e-02  5.12704812e-02  3.61244678e-02
    5.33219874e-02 -4.03933749e-02 -5.05723525e-04  5.26825599e-02
    3.99385728e-02 -1.95765235e-02 -1.65013485e-02  4.71832789e-03]]"
-https://www.youtube.com/watch?v=uz83G-2ny8Q,A paper exploring simulations that resemble reality is available for free. The paper was published in Nature Physics and features research from Károly and Felícia Zsolnai-Fehér.,Summary extraction error: Unexpected response format.,"DeepMind’s New AI Saw 15,000,000,000 Chess Boards!",Two Minute Papers,"[[-5.60090914e-02 -4.74290289e-02 -1.52648278e-02 -4.63566743e-02
+https://www.youtube.com/watch?v=uz83G-2ny8Q,"Microsoft Azure AI is now available for free, allowing users to explore and experiment with cutting-edge artificial intelligence features. The paper ""Grandmaster-Level Chess Without Search"" is available for free, and the paper's original publication can be found in Nature Physics with clickable citations. The paper is a collaboration between researchers at ETH Zurich and the University of Zurich.",Summary extraction error: Unexpected response format.,"DeepMind’s New AI Saw 15,000,000,000 Chess Boards!",Two Minute Papers,"[[-5.60090914e-02 -4.74290289e-02 -1.52648278e-02 -4.63566743e-02
    8.41054693e-03 -1.13100009e-02 -5.58977053e-02  2.51466893e-02
    3.81176546e-02  5.20670526e-02 -9.20833200e-02  1.13311568e-02
   -6.92538917e-03 -2.78409757e-03 -6.87249601e-02 -5.39754704e-03
@@ -287,7 +287,7 @@ https://www.youtube.com/watch?v=uz83G-2ny8Q,A paper exploring simulations that r
    2.27578059e-02  3.01283561e-02  8.59927386e-02  4.42745872e-02
   -8.31725355e-03 -2.93046106e-02  2.88612135e-02 -1.13835335e-02
    6.67043850e-02 -2.45101135e-02 -6.24303594e-02 -1.78346620e-03]]"
-https://www.youtube.com/watch?v=AW7WhX92eWk,"Microsoft Azure AI is showcased in the video. The paper ""ViCMA: Visual Control of Multibody Animations"" and ""Inverse-Foley Animation: Synchronizing rigid-body motions to sound"" are also highlighted. The video emphasizes the potential of simulations that appear remarkably realistic. The video acknowledges the generous support of Patreon supporters.",Summary extraction error: Unexpected response format.,NVIDIA’s New Tech: Master of Illusions!,Two Minute Papers,"[[-8.21157098e-02 -2.45792158e-02  1.39947664e-02 -2.30843667e-02
+https://www.youtube.com/watch?v=AW7WhX92eWk,"The video features papers on advances in artificial intelligence, including a paper on visual control of multibody animations, a paper on inverse-foley animation, and a paper on simulations that look almost like reality. The papers are available for free to view. The video also highlights the support of generous Patreon supporters who make Two Minute Papers possible.",Summary extraction error: Unexpected response format.,NVIDIA’s New Tech: Master of Illusions!,Two Minute Papers,"[[-8.21157098e-02 -2.45792158e-02  1.39947664e-02 -2.30843667e-02
   -1.89227723e-02 -4.82938141e-02  1.15969284e-02 -3.58743779e-02
   -4.28220257e-03 -1.38743818e-02 -3.63792926e-02 -2.98483763e-03
   -2.15512235e-04 -3.27372961e-02 -3.67016830e-02  1.39214564e-02
@@ -383,7 +383,13 @@ https://www.youtube.com/watch?v=AW7WhX92eWk,"Microsoft Azure AI is showcased in 
   -2.80917473e-02  3.84020917e-02  6.14102855e-02  7.05403835e-03
   -5.69882244e-03  3.18445452e-03 -1.80796906e-02  7.16845468e-02
    2.55962461e-02 -8.19041207e-03 -9.91027802e-03  3.44973169e-02]]"
-https://www.youtube.com/watch?v=Z_EliVUkuFA,"The video explores the paper ""Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context"" and the open-source model Gemma, which is based on Gemini research and technology. The paper investigates the potential of multi-modal understanding, particularly in the context of large amounts of data. The paper provides insights into the capabilities of Gemma and discusses its potential applications in various fields.",Summary extraction error: Unexpected response format.,"DeepMind’s New AI Remembers 10,000,000 Tokens!",Two Minute Papers,"[[-1.17287323e-01 -6.64191619e-02  1.55230556e-02  1.56298708e-02
+https://www.youtube.com/watch?v=Z_EliVUkuFA,"The video explores the paper ""Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context"" and the open-source model Gemma. The paper investigates the potential of transformers for capturing multimodal understanding in language models.
+
+The video highlights the collaboration between Google DeepMind and the authors of the paper to provide access to Gemini 1.5 Pro for testing purposes.
+
+The video acknowledges the support of Patreon supporters who contribute to the funding of the research.
+
+The video concludes with a list of researchers and organizations involved in the project.",Summary extraction error: Unexpected response format.,"DeepMind’s New AI Remembers 10,000,000 Tokens!",Two Minute Papers,"[[-1.17287323e-01 -6.64191619e-02  1.55230556e-02  1.56298708e-02
   -1.72100402e-02 -1.82116367e-02  7.23096170e-03  1.50734223e-02
    8.69361870e-03  2.01021954e-02 -5.64781167e-02  4.09906507e-02
   -2.07458399e-02 -3.89340743e-02 -7.23448955e-03  2.91764438e-02
@@ -479,13 +485,11 @@ https://www.youtube.com/watch?v=Z_EliVUkuFA,"The video explores the paper ""Gemi
    3.64055261e-02  5.94004542e-02  8.14193860e-02  2.59312186e-02
   -3.57044041e-02 -3.14842798e-02  1.38017787e-02  6.48742840e-02
    4.66802269e-02  4.16787267e-02 -7.35987127e-02 -8.07950180e-03]]"
-https://www.youtube.com/watch?v=8efxcrjdffg,"A sleep physiologist explores the potential of cannabis as a treatment for insomnia. The video highlights the lack of scientific research on cannabis' impact on sleep disorders, and introduces the world's first study investigating its effects. TED Members can support the channel's mission of spreading ideas through this video.","Video Summary:**
+https://www.youtube.com/watch?v=8efxcrjdffg,"A sleep physiologist explores the potential of cannabis as a safe and accessible treatment for insomnia. The video highlights the first scientific study investigating the use of medicinal cannabis for sleep disorders, highlighting its potential to help individuals rest peacefully.","Video Summary:**
 
-The video discusses the potential benefits of cannabis for treating insomnia. It highlights the history of cannabis use for sleep, including its effects on epilepsy, nausea, vomiting, muscle stiffness, and HIV/AIDS patients. The video also mentions the increasing understanding of cannabis's cannabinoids and their potential to improve sleep quality.
+The video explores the potential benefits of cannabis for treating insomnia. It highlights the historical use of cannabis for sleep and its current understanding as a treatment for insomnia. The video presents evidence from a study where 24 participants took a cannaboid medication containing THC and CBD for two weeks, demonstrating an increase in sleep duration and reduced symptoms of insomnia. However, it emphasizes the importance of more extensive research in larger and more diverse groups of people to confirm its safety and effectiveness. The video cautions against consuming excessive amounts and urges caution when using cannabis recreationally. ****
 
-The study involved administering a cannaboid medication containing THC and CBD to 24 participants for two weeks. The results showed that participants took the cannaboid medication slept longer and were more rested on waking up. However, it is important to note that cannabis remains illegal in most countries, and further research is needed with diverse populations and formulations. ****
-
-The video explores the need for more evidence regarding the effects of cannabis or cannaboids in treating medical conditions, particularly insomnia. It highlights the importance of generating more research to understand the science behind cannabis use and its potential benefits for sleep disorders. The early data suggest promising results, but more extensive studies are necessary to draw definitive conclusions.",Can Cannabis Help You Sleep? Here’s the Science | Jen Walsh | TED,TED,"[[ 4.13403884e-02  2.66690329e-02 -2.47114729e-02  8.24831426e-02
+The video explores the potential benefits of cannabis use in treating sleep disorders. It highlights the need for more scientific evidence to support the use of cannabis for medical purposes, particularly for insomnia. The research in Perth is promising, but further studies are necessary to fully understand the science and potential risks involved.",Can Cannabis Help You Sleep? Here’s the Science | Jen Walsh | TED,TED,"[[ 4.13403884e-02  2.66690329e-02 -2.47114729e-02  8.24831426e-02
    3.71869355e-02  7.82513693e-02  1.29280966e-02  3.19535993e-02
    2.97120064e-02  1.00389365e-02 -1.23235002e-01  3.88334952e-02
   -3.22052538e-02  1.03220176e-02 -2.90717036e-02  4.49158214e-02
@@ -581,7 +585,7 @@ The video explores the need for more evidence regarding the effects of cannabis 
    5.46824224e-02 -2.97437161e-02 -2.43382137e-02  3.12706754e-02
    2.58486420e-02  2.20771953e-02 -4.31250893e-02 -1.08630538e-01
    3.72444764e-02  1.96081586e-04  2.60294713e-02  2.90076714e-03]]"
-https://www.youtube.com/watch?v=QOCZYRXL0AQ,"Robotics and AI pioneer Daniela Rus discusses the convergence of AI and robotics, highlighting the potential of ""liquid networks"" to enhance intelligent machines. She proposes that these networks mimic the neural processes of simple organisms and could enable AI to operate beyond digital confines and engage dynamically in the real world.",Summary extraction error: Unexpected response format.,How AI Will Step Off the Screen and into the Real World | Daniela Rus | TED,TED,"[[-6.49395436e-02 -8.09095278e-02  1.35879973e-02 -7.38178939e-03
+https://www.youtube.com/watch?v=QOCZYRXL0AQ,"Daniela Rus proposes the convergence of AI and robotics to unlock a new world of possibilities in everyday life. She explains that ""liquid networks"" of AI inspired by simple organisms could enhance intelligence and enable machines to operate beyond digital limitations. This concept could lead to breakthroughs in areas such as information processing and real-world interaction.",Summary extraction error: Unexpected response format.,How AI Will Step Off the Screen and into the Real World | Daniela Rus | TED,TED,"[[-6.49395436e-02 -8.09095278e-02  1.35879973e-02 -7.38178939e-03
    4.61411923e-02 -7.37666152e-03  2.35637110e-02  3.91434133e-02
    1.12472009e-02  2.19834074e-02 -1.30205322e-02  3.46596576e-02
    9.90798231e-03  8.68362002e-03 -5.00893593e-02 -1.86509453e-03
@@ -677,7 +681,7 @@ https://www.youtube.com/watch?v=QOCZYRXL0AQ,"Robotics and AI pioneer Daniela Rus
   -1.85335856e-02  7.62298107e-02  8.58070776e-02 -1.42095871e-02
   -1.48576330e-02 -3.50290872e-02 -8.98929983e-02  1.08919561e-01
    1.57483276e-02  2.91656461e-02 -4.18006629e-02 -1.94055531e-02]]"
-https://www.youtube.com/watch?v=Vuu6Bhq7TSE,"Marisa G. Franco is an expert on friendship, sharing her insights on how to make and maintain strong connections. In her TED Talk, Franco explores the secrets to successful friendship, covering topics such as communication, empathy, and shared values.",Summary extraction error: Unexpected response format.,The Secret to Making New Friends as an Adult (part 2) | Marisa G. Franco  @TED  #ted #tedtalks,TED,"[[-9.46800336e-02 -3.47784087e-02  6.08945452e-02  8.05707872e-02
+https://www.youtube.com/watch?v=Vuu6Bhq7TSE,"Marisa G. Franco is an expert on friendship, sharing insights and strategies to nurture deep, lasting connections. In her TED Talk, she provides practical advice on how to make and keep great friends, drawing on her years of research and personal experience.",Summary extraction error: Unexpected response format.,The Secret to Making New Friends as an Adult (part 2) | Marisa G. Franco  @TED  #ted #tedtalks,TED,"[[-9.46800336e-02 -3.47784087e-02  6.08945452e-02  8.05707872e-02
    1.04807811e-02  4.21402091e-03  2.01034956e-02  2.36273520e-02
    1.99917834e-02 -5.15890867e-02 -1.07081374e-02  1.93602890e-02
   -3.60114723e-02 -6.54773135e-03 -2.94317417e-02 -1.07246554e-02
@@ -773,7 +777,7 @@ https://www.youtube.com/watch?v=Vuu6Bhq7TSE,"Marisa G. Franco is an expert on fr
   -3.64384614e-02 -3.63933714e-03 -6.78778440e-03  5.11112250e-03
   -3.47782560e-02  1.10707507e-01  2.76394151e-02 -4.62393910e-02
   -8.10212269e-03  3.65732796e-02 -4.41353843e-02 -6.52157888e-02]]"
-https://www.youtube.com/watch?v=54AYOd5S7uo,"The video highlights the prevalence of economic crime and how it undermines societal order. Economist Hanjo Seibert discusses the complexities of money laundering and the power of collective action to dismantle the underworld economy. The video emphasizes the importance of supporting TED Talks, a platform featuring insightful talks from renowned thinkers and doers.",Summary extraction error: Unexpected response format.,What You Can Do to Stop Economic Crime | Hanjo Seibert | TED,TED,"[[-2.37145443e-02 -1.15404790e-02 -2.55327933e-02 -4.27749828e-02
+https://www.youtube.com/watch?v=54AYOd5S7uo,"The video discusses the complexities of economic crime and how we can all contribute to dismantling the underworld economy. It highlights the various forms of economic crime, including drug trafficking, fraud, and tax evasion. The speaker highlights the collective power of individuals to take action and turn off the money tap for criminals.",Summary extraction error: Unexpected response format.,What You Can Do to Stop Economic Crime | Hanjo Seibert | TED,TED,"[[-2.37145443e-02 -1.15404790e-02 -2.55327933e-02 -4.27749828e-02
    5.94000593e-02  5.00700511e-02  6.91126287e-02 -5.48221916e-03
    2.25682762e-02  3.75515819e-02  5.02006151e-02  6.23806641e-02
   -8.50619748e-04  1.63729675e-03  1.46720726e-02 -1.45105030e-02
@@ -869,9 +873,7 @@ https://www.youtube.com/watch?v=54AYOd5S7uo,"The video highlights the prevalence
    1.53328665e-02  3.82016264e-02  4.70944941e-02 -2.97524985e-02
   -4.04371833e-03  2.32772455e-02 -4.61067483e-02 -1.39675196e-03
    5.20893782e-02 -6.90167993e-02 -1.16524491e-02 -2.51199603e-02]]"
-https://www.youtube.com/watch?v=0juLRi90kRg,"Palestinians and Israelis discuss achieving peace, emphasizing reconciliation over revenge. They believe in a better future and are building a coalition of citizens to create a path to hope and peace.
-
-The video highlights their experiences with conflict and the importance of finding shared values. They are committed to building a more peaceful and prosperous region.",Summary extraction error: Unexpected response format.,"A Palestinian and an Israeli, Face to Face | Aziz Abu Sarah and Maoz Inon | TED",TED,"[[-6.59397542e-02  4.42421995e-02 -2.93963123e-04  1.25752175e-02
+https://www.youtube.com/watch?v=0juLRi90kRg,Palestinian and Israeli peacemakers Aziz Abu Sarah and Maoz Inon discuss the challenges they've experienced and how they choose reconciliation over revenge. They believe in a better future and are working to build a coalition of Israeli and Palestinian citizens to create hope and peace.,Summary extraction error: Unexpected response format.,"A Palestinian and an Israeli, Face to Face | Aziz Abu Sarah and Maoz Inon | TED",TED,"[[-6.59397542e-02  4.42421995e-02 -2.93963123e-04  1.25752175e-02
    6.87365085e-02  3.58033590e-02  3.06441262e-02 -3.41361724e-02
    5.24538755e-02  3.59040461e-02 -7.62589974e-04  1.12729603e-02
    2.14348845e-02  2.13685706e-02  5.26450872e-02  3.07862945e-02

@@ -4,8 +4,8 @@ from tqdm import tqdm
 import numpy as np
 import os
 import sys
-from utils import *
-from old_utils import *
+from utils.utils import *
+from utils.old_utils import *
 
 
 def generate_embeddings_df(df: pd.DataFrame, path: str) -> tuple[list, list, list]:
@@ -134,11 +134,12 @@ def generate_df(channels: list[str], path: str, num_videos=None, return_df=False
     """
     # api_key
     api_key = get_api_key(os.path.join('../', 'keys', 'VideoFinder', 'YouTubeAPIKey.txt'))
-
+    if model is None:
+        model = initialize_model('gemma:2b-instruct')
     df = pd.DataFrame()
 
     for channel in channels:
-        channel_id, channel_name = extract_channel_id_and_name(download_html(channel))
+        channel_id, channel_name = get_channel_id_and_name(download_html(channel))
         print(f"Processing channel: {channel_name}")
         df = add_channel_videos(channel_id, api_key, df=df, num_vids=num_videos)
 
