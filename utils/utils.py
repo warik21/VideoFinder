@@ -404,12 +404,12 @@ def generate_prompt(video_title: str, video_description: str, video_transcript: 
     return generated_prompt.content
 
 
-def initialize_embedding_model():
+def initialize_embedding_model(model_name: Optional[str]='all-MiniLM-L6-v2'):
     global model_embedding
-    model_embedding = SentenceTransformer('all-MiniLM-L6-v2')
+    model_embedding = SentenceTransformer(model_name)
 
 
-def initialize_model(model_name: Optional[str]):
+def initialize_model(model_name: Optional[str]='gemma:2b-instruct'):
     global model
     model = Ollama(model=model_name)
     # global embeddings
