@@ -4,7 +4,7 @@ import os
 sys.path.append(os.path.abspath('../../'))
 from utils import generate_prompt
 
-df = pd.read_csv('../videos_df.csv')
+df = pd.read_csv('csvs/videos_df.csv')
 
 prompts = []
 

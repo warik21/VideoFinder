@@ -13,6 +13,10 @@ from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from typing import Optional
 import torch
+from langchain_community.llms import Ollama
+from langchain_community.embeddings import OllamaEmbeddings
+from langchain.prompts import PromptTemplate
+from langchain_core.output_parsers import StrOutputParser
 from transformers import DistilBertModel, DistilBertTokenizer
 
 
@@ -41,7 +45,7 @@ def download_html(url):
     return html
 
 
-def extract_channel_id_and_name(html_content):
+def get_channel_id_and_name(html_content):
     """Extracts the channel ID and name from a YouTube channel URL.
 
     Args:
@@ -217,37 +221,57 @@ def summarize_text(text: str, text_type: str) -> str:
     Returns:
         The summarized text.
     """
-    template = f"""
+    prefix = f"The video summary based on the {text_type} is:"    
+    template = """
     Please summarize the video {text_type}. 
     Start your summary with the phrase "The video summary based on the {text_type} is:" 
     and provide the summary right after.
 
-    {text_type.capitalize()}: {{text}}
+    text :{text}
     """
+    responses = []
+    parser = StrOutputParser()
+    prompt = PromptTemplate.from_template(template)
+    chain = prompt | model | parser
+    
+    chunks = RecursiveCharacterTextSplitter(chunk_size=8192, chunk_overlap=512).split_text(text)
+    for chunk in chunks:
+        responses.append(chain.invoke({"text": chunk, "text_type": text_type}))
+    response = " ".join(responses)
+    
+    summary = process_summary(response, prefix)
 
-    prompt = template.format(text=text)
-    chat_llm = ChatOpenAI(temperature=0, base_url="http://localhost:1234/v1", api_key="not-needed")
-    response = chat_llm.invoke(prompt)
-    prefix = f"The video summary based on the {text_type} is:"
-    return process_summary(response.content, prefix)
+    
+    return process_summary(response, prefix)
 
 
 def process_summary(response: str, prefix: str) -> str:
+    """
+    Processes the summary response to remove all occurrences of a specified prefix and additional formatting.
+
+    Args:
+        response: The full response string from the summarization.
+        prefix: The prefix that should be removed from the response.
+
+    Returns:
+        The cleaned summary text. If the prefix is not found even once, it returns an error message.
+    """
     if prefix in response:
-        summary_text = response.split(prefix, 1)[1].strip()
-        return summary_text.strip('*').strip()
+        summary_text = response.replace(prefix, "").strip()
+        summary_text = summary_text.strip('*').strip()
+        return summary_text
     else:
         return "Summary extraction error: Unexpected response format."
 
 
-def get_embedding(text: str, model: Optional[SentenceTransformer] = None) -> list[float]:
+def get_embedding(text: str, encoding_model: Optional[SentenceTransformer] = None) -> list[float]:
     """
     Get the embedding of a text using a SentenceTransformer model. If no model is explicitly provided,
     the function will initialize and use the default 'sentence-transformers/all-MiniLM-L6-v2' model.
 
     Args:
         text (str): The text to get the embedding for.
-        model (Optional[SentenceTransformer], optional): The SentenceTransformer model to use for embedding.
+        encoding_model (Optional[SentenceTransformer], optional): The SentenceTransformer model to use for embedding.
             If not specified, the function initializes the 'all-MiniLM-L6-v2' model by default.
 
     Returns:
@@ -263,18 +287,18 @@ def get_embedding(text: str, model: Optional[SentenceTransformer] = None) -> lis
         embedding = get_embedding("This is a sample text.", model=custom_model)
         print(embedding)
     """
-    if model is None:
-        model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+    if encoding_model is None:
+        encoding_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
     if not text.strip():
         print("Attempted to get embedding for empty text.")
         return []
     device = "cuda:0" if torch.cuda.is_available() else "cpu"
-    model.to(device)
+    encoding_model.to(device)
 
-    return model.encode(text).reshape(1, -1)
+    return encoding_model.encode(text).reshape(1, -1)
 
 
-def get_joint_embedding(name: str, description: str, transcript: str, model=None) -> list[float]:
+def get_joint_embedding(name: str, description: str, transcript: str, encoding_model=None) -> list[float]:
     """
     Generate a joint embedding for a video by combining the embeddings of its name, description, and transcript.
 
@@ -295,12 +319,12 @@ def get_joint_embedding(name: str, description: str, transcript: str, model=None
         joint_embedding = get_joint_embedding(name, description, transcript)
         print(joint_embedding)  # This will print the joint embedding vector as a list of floats.
     """
-    if model is None:
-        model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+    if encoding_model is None:
+        encoding_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 
-    name_embedding = get_embedding(name, model)
-    description_embedding = get_embedding(description, model)
-    transcript_embedding = get_embedding(transcript, model)
+    name_embedding = get_embedding(name, encoding_model)
+    description_embedding = get_embedding(description, encoding_model)
+    transcript_embedding = get_embedding(transcript, encoding_model)
 
     # Combine the embeddings
     joint_embedding = 0.4 * name_embedding + 0.3 * description_embedding + 0.3 * transcript_embedding
@@ -378,3 +402,16 @@ def generate_prompt(video_title: str, video_description: str, video_transcript: 
                                      "title": video_title})
 
     return generated_prompt.content
+
+
+def initialize_embedding_model():
+    global model_embedding
+    model_embedding = SentenceTransformer('all-MiniLM-L6-v2')
+
+
+def initialize_model(model_name: Optional[str]):
+    global model
+    model = Ollama(model=model_name)
+    # global embeddings
+    # embeddings = OllamaEmbeddings(model)
+    
