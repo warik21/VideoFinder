@@ -63,7 +63,7 @@ print(f'Accuracy: {sum([1 for i, j in zip(true_index, predicted_index) if i == j
 video_recommending_model = initialize_video_model(embedding_dim)
 loss_function = nn.BCEWithLogitsLoss()
 optimizer = optim.Adam(video_recommending_model.parameters(), lr=0.001)  # You can adjust the learning rate as needed
-num_epochs = 500
+num_epochs = 100
 train_BCE(video_recommending_model, optimizer, loss_function, video_dataloader, num_epochs)
 video_recommending_model.eval()  # Set the model to evaluation mode
 predictions = pd.DataFrame(columns=['video_id', 'hf'])
@@ -78,7 +78,7 @@ print(f'Accuracy: {sum([1 for i, j in zip(true_index, predicted_index) if i == j
 num_epochs = 100
 video_recommending_model = initialize_video_model(embedding_dim)
 # Call the train function
-optimizer = optim.Adam(model.parameters(), lr=1e-3)
+optimizer = optim.Adam(video_recommending_model.parameters(), lr=1e-3)
 train_pairwise(video_recommending_model, optimizer, video_dataloader, num_epochs)
 video_recommending_model.eval()  # Set the model to evaluation mode
 predictions = pd.DataFrame(columns=['video_id', 'hf'])

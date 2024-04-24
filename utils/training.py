@@ -10,8 +10,8 @@ from sentence_transformers import SentenceTransformer
 from torch.utils.data import Dataset, DataLoader
 import torch.optim as optim
 import sys
-from utils import *
-from generate_dfs import *
+from utils.utils import *
+from utils.generate_dfs import *
 
 
 class VideoRecommendationModel(nn.Module):
