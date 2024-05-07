@@ -1,6 +1,7 @@
 import re
 import tqdm
 from googleapiclient.discovery import build
+import numpy as np
 import urllib.request
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api._errors import TranscriptsDisabled, NoTranscriptFound
@@ -415,3 +416,21 @@ def initialize_model(model_name: Optional[str]='gemma:2b-instruct'):
     # global embeddings
     # embeddings = OllamaEmbeddings(model)
     
+
+def generate_predictions(similarities_df: pd.DataFrame) -> pd.DataFrame:
+    predictions = pd.DataFrame(columns=['video_id', 'hf'])
+    video_names = similarities_df.index.tolist()
+
+    for i in range(len(similarities_df.index)):
+        hf = 0
+
+        similarities_hf = similarities_df.iloc[i]['similarity_hf']
+
+        closest_index_hf = np.argmax(similarities_hf)
+
+        if video_names[closest_index_hf] == video_names[i]:
+            hf = 1
+
+        predictions.loc[i] = [video_names[i], hf]
+
+    return predictions
