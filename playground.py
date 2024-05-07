@@ -20,24 +20,7 @@ embedding_dim = 384
 videos_df = pd.read_csv('csvs/videos_df.csv')
 similarities_df = pd.read_csv('csvs/similarities.csv')
 
-predictions = pd.DataFrame(columns=['video_id', 'hf'])
-video_names = similarities_df.index.tolist()
-
-#TODO : make this a function, which takes in the similarities df and returns the accuracy
-for i in range(len(similarities_df.index)):
-    hf = 0
-
-    similarities_hf = similarities_df.iloc[i]['similarity_hf']
-
-    closest_index_hf = np.argmax(similarities_hf)
-
-    if video_names[closest_index_hf] == video_names[i]:
-        hf = 1
-
-    predictions.loc[i] = [video_names[i], hf]
-
-print(f"Accuracy HF: {predictions['hf'].sum() / len(similarities_df.index) * 100:.2f}%")
-
+predictions = generate_predictions(similarities_df)
 embeddings_df = generate_embeddings_hf_df(videos_df, 'csvs/embeddings_hf.csv')
 
 title_embeds = torch.tensor(embeddings_df['title_embedding'], dtype=torch.float32).squeeze()
@@ -57,12 +40,12 @@ cosine_similarities = video_recommending_model(title_embeds, desc_embeds, trans_
 video_names = similarities_df.index.tolist()
 true_index = list(range(len(video_names)))
 predicted_index = torch.argmax(cosine_similarities, dim=1).tolist()
-print(f'Accuracy: {sum([1 for i, j in zip(true_index, predicted_index) if i == j]) / len(true_index) * 100:.2f}%')
+print(f'Baseline Accuracy: {sum([1 for i, j in zip(true_index, predicted_index) if i == j]) / len(true_index) * 100:.2f}%')
 
 # Train using BCE loss
 video_recommending_model = initialize_video_model(embedding_dim)
 loss_function = nn.BCEWithLogitsLoss()
-optimizer = optim.Adam(video_recommending_model.parameters(), lr=0.001)  # You can adjust the learning rate as needed
+optimizer = optim.Adam(video_recommending_model.parameters(), lr=0.001)
 num_epochs = 100
 train_BCE(video_recommending_model, optimizer, loss_function, video_dataloader, num_epochs)
 video_recommending_model.eval()  # Set the model to evaluation mode
@@ -71,7 +54,7 @@ cosine_similarities = video_recommending_model(title_embeds, desc_embeds, trans_
 video_names = similarities_df.index.tolist()
 true_index = list(range(len(video_names)))
 predicted_index = torch.argmax(cosine_similarities, dim=1).tolist()
-print(f'Accuracy: {sum([1 for i, j in zip(true_index, predicted_index) if i == j]) / len(true_index) * 100:.2f}%')
+print(f'BCE-Loss Accuracy: {sum([1 for i, j in zip(true_index, predicted_index) if i == j]) / len(true_index) * 100:.2f}%')
 
 
 # Train using Pairwise ranking loss
@@ -86,4 +69,10 @@ cosine_similarities = video_recommending_model(title_embeds, desc_embeds, trans_
 video_names = similarities_df.index.tolist()
 true_index = list(range(len(video_names)))
 predicted_index = torch.argmax(cosine_similarities, dim=1).tolist()
-print(f'Accuracy: {sum([1 for i, j in zip(true_index, predicted_index) if i == j]) / len(true_index) * 100:.2f}%')
+print(f'Pairwise Ranking Loss Accuracy: {sum([1 for i, j in zip(true_index, predicted_index) if i == j]) / len(true_index) * 100:.2f}%')
+
+names = ['title', 'description', 'transcript']
+for name, param in video_recommending_model.state_dict().items():
+    if "weight" in name:
+        for i in range(len(param)):
+            print(f"{names[i]} weight: {param[i].detach().numpy()}")
