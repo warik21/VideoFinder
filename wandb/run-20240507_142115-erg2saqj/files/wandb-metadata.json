@@ -1,0 +1,52 @@
+{
+    "os": "Windows-10-10.0.22631-SP0",
+    "python": "3.11.4",
+    "heartbeatAt": "2024-05-07T11:21:16.724378",
+    "startedAt": "2024-05-07T11:21:15.608023",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "<python with no main file>",
+    "codePathLocal": null,
+    "git": {
+        "remote": "https://github.com/warik21/VideoFinder.git",
+        "commit": "75fe94fb16f931144568ee8616aa88aced9ed314"
+    },
+    "email": "65851326+warik21@users.noreply.github.com",
+    "root": "C:/Users/eriki/OneDrive/Documents/all_folder/other_projects/VideoFinder",
+    "host": "Warik",
+    "username": "eriki",
+    "executable": "c:\\Users\\eriki\\OneDrive\\Documents\\all_folder\\other_projects\\VideoFinder\\VFenv\\Scripts\\python.exe",
+    "cpu_count": 8,
+    "cpu_count_logical": 12,
+    "cpu_freq": {
+        "current": 2100.0,
+        "min": 0.0,
+        "max": 2100.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2100.0,
+            "min": 0.0,
+            "max": 2100.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 474.71581649780273,
+            "used": 261.6726264953613
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+            "memory_total": 6442450944
+        }
+    ],
+    "memory": {
+        "total": 15.730522155761719
+    }
+}
