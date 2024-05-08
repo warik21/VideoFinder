@@ -240,9 +240,6 @@ def summarize_text(text: str, text_type: str) -> str:
         responses.append(chain.invoke({"text": chunk, "text_type": text_type}))
     response = " ".join(responses)
     
-    summary = process_summary(response, prefix)
-
-    
     return process_summary(response, prefix)
 
 
