@@ -2104,3 +2104,8 @@
 2024-05-08 11:57:52,236 DEBUG   HandlerThread:18892 [handler.py:handle_request():146] handle_request: status_report
 2024-05-08 11:57:56,343 DEBUG   HandlerThread:18892 [handler.py:handle_request():146] handle_request: keepalive
 2024-05-08 11:57:57,277 DEBUG   HandlerThread:18892 [handler.py:handle_request():146] handle_request: status_report
+2024-05-08 11:58:01,392 DEBUG   HandlerThread:18892 [handler.py:handle_request():146] handle_request: keepalive
+2024-05-08 11:58:02,335 DEBUG   HandlerThread:18892 [handler.py:handle_request():146] handle_request: status_report
+2024-05-08 11:58:06,107 DEBUG   SenderThread:18892 [sender.py:send():379] send: stats
+2024-05-08 11:58:06,421 DEBUG   HandlerThread:18892 [handler.py:handle_request():146] handle_request: keepalive
+2024-05-08 11:58:08,120 DEBUG   HandlerThread:18892 [handler.py:handle_request():146] handle_request: status_report
