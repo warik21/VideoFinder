@@ -1,0 +1,172 @@
+2024-05-10 03:08:20,312 INFO    StreamThr :9756 [internal.py:wandb_internal():86] W&B internal server running at pid: 9756, started at: 2024-05-10 03:08:20.311776
+2024-05-10 03:08:20,314 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: status
+2024-05-10 03:08:20,319 INFO    WriterThread:9756 [datastore.py:open_for_write():87] open: c:\Users\eriki\OneDrive\Documents\all_folder\other_projects\VideoFinder\wandb\run-20240510_030820-djdz9frt\run-djdz9frt.wandb
+2024-05-10 03:08:20,320 DEBUG   SenderThread:9756 [sender.py:send():379] send: header
+2024-05-10 03:08:20,349 DEBUG   SenderThread:9756 [sender.py:send():379] send: run
+2024-05-10 03:08:20,817 INFO    SenderThread:9756 [dir_watcher.py:__init__():211] watching files in: c:\Users\eriki\OneDrive\Documents\all_folder\other_projects\VideoFinder\wandb\run-20240510_030820-djdz9frt\files
+2024-05-10 03:08:20,817 INFO    SenderThread:9756 [sender.py:_start_run_threads():1124] run started: djdz9frt with start time 1715299700.31275
+2024-05-10 03:08:20,825 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: check_version
+2024-05-10 03:08:20,826 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: check_version
+2024-05-10 03:08:21,131 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: run_start
+2024-05-10 03:08:21,162 DEBUG   HandlerThread:9756 [system_info.py:__init__():26] System info init
+2024-05-10 03:08:21,162 DEBUG   HandlerThread:9756 [system_info.py:__init__():41] System info init done
+2024-05-10 03:08:21,162 INFO    HandlerThread:9756 [system_monitor.py:start():194] Starting system monitor
+2024-05-10 03:08:21,163 INFO    SystemMonitor:9756 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-05-10 03:08:21,163 INFO    HandlerThread:9756 [system_monitor.py:probe():214] Collecting system info
+2024-05-10 03:08:21,167 INFO    SystemMonitor:9756 [interfaces.py:start():190] Started cpu monitoring
+2024-05-10 03:08:21,167 INFO    SystemMonitor:9756 [interfaces.py:start():190] Started disk monitoring
+2024-05-10 03:08:21,168 INFO    SystemMonitor:9756 [interfaces.py:start():190] Started gpu monitoring
+2024-05-10 03:08:21,176 INFO    SystemMonitor:9756 [interfaces.py:start():190] Started memory monitoring
+2024-05-10 03:08:21,186 INFO    SystemMonitor:9756 [interfaces.py:start():190] Started network monitoring
+2024-05-10 03:08:21,193 DEBUG   HandlerThread:9756 [system_info.py:probe():150] Probing system
+2024-05-10 03:08:21,194 DEBUG   HandlerThread:9756 [system_info.py:_probe_git():135] Probing git
+2024-05-10 03:08:21,247 DEBUG   HandlerThread:9756 [system_info.py:_probe_git():143] Probing git done
+2024-05-10 03:08:21,247 DEBUG   HandlerThread:9756 [system_info.py:probe():198] Probing system done
+2024-05-10 03:08:21,247 DEBUG   HandlerThread:9756 [system_monitor.py:probe():223] {'os': 'Windows-10-10.0.22631-SP0', 'python': '3.11.4', 'heartbeatAt': '2024-05-10T00:08:21.193161', 'startedAt': '2024-05-10T00:08:20.306750', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '<python with no main file>', 'codePathLocal': None, 'git': {'remote': 'https://github.com/warik21/VideoFinder.git', 'commit': '813060277001d0f1a9c78a38976d4c3b756db77c'}, 'email': '65851326+warik21@users.noreply.github.com', 'root': 'C:/Users/eriki/OneDrive/Documents/all_folder/other_projects/VideoFinder', 'host': 'Warik', 'username': 'eriki', 'executable': 'c:\\Users\\eriki\\OneDrive\\Documents\\all_folder\\other_projects\\VideoFinder\\VFenv\\Scripts\\python.exe', 'cpu_count': 8, 'cpu_count_logical': 12, 'cpu_freq': {'current': 2100.0, 'min': 0.0, 'max': 2100.0}, 'cpu_freq_per_core': [{'current': 2100.0, 'min': 0.0, 'max': 2100.0}], 'disk': {'/': {'total': 474.71581649780273, 'used': 266.1630058288574}}, 'gpu': 'NVIDIA GeForce RTX 3050 6GB Laptop GPU', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 3050 6GB Laptop GPU', 'memory_total': 6442450944}], 'memory': {'total': 15.730522155761719}}
+2024-05-10 03:08:21,247 INFO    HandlerThread:9756 [system_monitor.py:probe():224] Finished collecting system info
+2024-05-10 03:08:21,247 INFO    HandlerThread:9756 [system_monitor.py:probe():227] Publishing system info
+2024-05-10 03:08:21,248 INFO    HandlerThread:9756 [system_monitor.py:probe():229] Finished publishing system info
+2024-05-10 03:08:21,251 DEBUG   SenderThread:9756 [sender.py:send():379] send: files
+2024-05-10 03:08:21,251 INFO    SenderThread:9756 [sender.py:_save_file():1390] saving file wandb-metadata.json with policy now
+2024-05-10 03:08:21,408 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: python_packages
+2024-05-10 03:08:21,408 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: python_packages
+2024-05-10 03:08:21,408 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-10 03:08:21,409 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: stop_status
+2024-05-10 03:08:21,409 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 03:08:21,689 DEBUG   SenderThread:9756 [sender.py:send():379] send: telemetry
+2024-05-10 03:08:21,689 DEBUG   SenderThread:9756 [sender.py:send():379] send: telemetry
+2024-05-10 03:08:21,689 DEBUG   SenderThread:9756 [sender.py:send():379] send: exit
+2024-05-10 03:08:21,690 INFO    SenderThread:9756 [sender.py:send_exit():586] handling exit code: 0
+2024-05-10 03:08:21,690 INFO    SenderThread:9756 [sender.py:send_exit():588] handling runtime: 0
+2024-05-10 03:08:21,690 INFO    SenderThread:9756 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-05-10 03:08:21,691 INFO    SenderThread:9756 [sender.py:send_exit():594] send defer
+2024-05-10 03:08:21,691 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: defer
+2024-05-10 03:08:21,691 INFO    HandlerThread:9756 [handler.py:handle_request_defer():172] handle defer: 0
+2024-05-10 03:08:21,691 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: defer
+2024-05-10 03:08:21,691 INFO    SenderThread:9756 [sender.py:send_request_defer():610] handle sender defer: 0
+2024-05-10 03:08:21,691 INFO    SenderThread:9756 [sender.py:transition_state():614] send defer: 1
+2024-05-10 03:08:21,691 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: defer
+2024-05-10 03:08:21,691 INFO    HandlerThread:9756 [handler.py:handle_request_defer():172] handle defer: 1
+2024-05-10 03:08:21,691 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: defer
+2024-05-10 03:08:21,691 INFO    SenderThread:9756 [sender.py:send_request_defer():610] handle sender defer: 1
+2024-05-10 03:08:21,691 INFO    SenderThread:9756 [sender.py:transition_state():614] send defer: 2
+2024-05-10 03:08:21,691 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: defer
+2024-05-10 03:08:21,691 INFO    HandlerThread:9756 [handler.py:handle_request_defer():172] handle defer: 2
+2024-05-10 03:08:21,691 INFO    HandlerThread:9756 [system_monitor.py:finish():203] Stopping system monitor
+2024-05-10 03:08:21,691 DEBUG   SystemMonitor:9756 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-05-10 03:08:21,692 INFO    HandlerThread:9756 [interfaces.py:finish():202] Joined cpu monitor
+2024-05-10 03:08:21,692 DEBUG   SystemMonitor:9756 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-05-10 03:08:21,698 INFO    HandlerThread:9756 [interfaces.py:finish():202] Joined disk monitor
+2024-05-10 03:08:21,698 DEBUG   SystemMonitor:9756 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-05-10 03:08:21,745 INFO    HandlerThread:9756 [interfaces.py:finish():202] Joined gpu monitor
+2024-05-10 03:08:21,745 INFO    HandlerThread:9756 [interfaces.py:finish():202] Joined memory monitor
+2024-05-10 03:08:21,745 INFO    HandlerThread:9756 [interfaces.py:finish():202] Joined network monitor
+2024-05-10 03:08:21,746 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: defer
+2024-05-10 03:08:21,746 INFO    SenderThread:9756 [sender.py:send_request_defer():610] handle sender defer: 2
+2024-05-10 03:08:21,746 INFO    SenderThread:9756 [sender.py:transition_state():614] send defer: 3
+2024-05-10 03:08:21,746 DEBUG   SenderThread:9756 [sender.py:send():379] send: stats
+2024-05-10 03:08:21,746 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: defer
+2024-05-10 03:08:21,746 INFO    HandlerThread:9756 [handler.py:handle_request_defer():172] handle defer: 3
+2024-05-10 03:08:21,747 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: defer
+2024-05-10 03:08:21,747 INFO    SenderThread:9756 [sender.py:send_request_defer():610] handle sender defer: 3
+2024-05-10 03:08:21,747 INFO    SenderThread:9756 [sender.py:transition_state():614] send defer: 4
+2024-05-10 03:08:21,747 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: defer
+2024-05-10 03:08:21,747 INFO    HandlerThread:9756 [handler.py:handle_request_defer():172] handle defer: 4
+2024-05-10 03:08:21,747 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: defer
+2024-05-10 03:08:21,747 INFO    SenderThread:9756 [sender.py:send_request_defer():610] handle sender defer: 4
+2024-05-10 03:08:21,747 INFO    SenderThread:9756 [sender.py:transition_state():614] send defer: 5
+2024-05-10 03:08:21,747 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: defer
+2024-05-10 03:08:21,747 INFO    HandlerThread:9756 [handler.py:handle_request_defer():172] handle defer: 5
+2024-05-10 03:08:21,747 DEBUG   SenderThread:9756 [sender.py:send():379] send: summary
+2024-05-10 03:08:21,748 INFO    SenderThread:9756 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-05-10 03:08:21,748 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: defer
+2024-05-10 03:08:21,748 INFO    SenderThread:9756 [sender.py:send_request_defer():610] handle sender defer: 5
+2024-05-10 03:08:21,748 INFO    SenderThread:9756 [sender.py:transition_state():614] send defer: 6
+2024-05-10 03:08:21,748 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: defer
+2024-05-10 03:08:21,748 INFO    HandlerThread:9756 [handler.py:handle_request_defer():172] handle defer: 6
+2024-05-10 03:08:21,748 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: defer
+2024-05-10 03:08:21,748 INFO    SenderThread:9756 [sender.py:send_request_defer():610] handle sender defer: 6
+2024-05-10 03:08:21,749 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: status_report
+2024-05-10 03:08:21,833 INFO    Thread-16 :9756 [dir_watcher.py:_on_file_created():271] file/dir created: c:\Users\eriki\OneDrive\Documents\all_folder\other_projects\VideoFinder\wandb\run-20240510_030820-djdz9frt\files\wandb-metadata.json
+2024-05-10 03:08:21,833 INFO    Thread-16 :9756 [dir_watcher.py:_on_file_created():271] file/dir created: c:\Users\eriki\OneDrive\Documents\all_folder\other_projects\VideoFinder\wandb\run-20240510_030820-djdz9frt\files\requirements.txt
+2024-05-10 03:08:21,833 INFO    Thread-16 :9756 [dir_watcher.py:_on_file_created():271] file/dir created: c:\Users\eriki\OneDrive\Documents\all_folder\other_projects\VideoFinder\wandb\run-20240510_030820-djdz9frt\files\wandb-summary.json
+2024-05-10 03:08:21,933 INFO    wandb-upload_0:9756 [upload_job.py:push():131] Uploaded file C:\Users\eriki\AppData\Local\Temp\tmph2esmr4kwandb\m7cxg66o-wandb-metadata.json
+2024-05-10 03:08:21,959 INFO    SenderThread:9756 [sender.py:transition_state():614] send defer: 7
+2024-05-10 03:08:21,959 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: defer
+2024-05-10 03:08:21,959 INFO    HandlerThread:9756 [handler.py:handle_request_defer():172] handle defer: 7
+2024-05-10 03:08:21,959 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: defer
+2024-05-10 03:08:21,959 INFO    SenderThread:9756 [sender.py:send_request_defer():610] handle sender defer: 7
+2024-05-10 03:08:21,959 INFO    SenderThread:9756 [sender.py:transition_state():614] send defer: 8
+2024-05-10 03:08:21,960 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: defer
+2024-05-10 03:08:21,960 INFO    HandlerThread:9756 [handler.py:handle_request_defer():172] handle defer: 8
+2024-05-10 03:08:21,960 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: defer
+2024-05-10 03:08:21,960 INFO    SenderThread:9756 [sender.py:send_request_defer():610] handle sender defer: 8
+2024-05-10 03:08:21,960 INFO    SenderThread:9756 [job_builder.py:build():318] Attempting to build job artifact
+2024-05-10 03:08:21,960 INFO    SenderThread:9756 [job_builder.py:_get_source_type():455] is repo sourced job
+2024-05-10 03:08:21,960 INFO    SenderThread:9756 [job_builder.py:_get_program_relpath():473] run is notebook based run
+2024-05-10 03:08:21,960 WARNING SenderThread:9756 [job_builder.py:_log_if_verbose():210] Source type is set to 'repo' but some required information is missing from the environment. A job will not be created from this run. See https://docs.wandb.ai/guides/launch/create-job
+2024-05-10 03:08:21,960 INFO    SenderThread:9756 [sender.py:transition_state():614] send defer: 9
+2024-05-10 03:08:21,961 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: defer
+2024-05-10 03:08:21,961 INFO    HandlerThread:9756 [handler.py:handle_request_defer():172] handle defer: 9
+2024-05-10 03:08:21,961 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: defer
+2024-05-10 03:08:21,961 INFO    SenderThread:9756 [sender.py:send_request_defer():610] handle sender defer: 9
+2024-05-10 03:08:21,961 INFO    SenderThread:9756 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-05-10 03:08:22,483 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: poll_exit
+2024-05-10 03:08:22,840 INFO    SenderThread:9756 [dir_watcher.py:_on_file_modified():288] file/dir modified: c:\Users\eriki\OneDrive\Documents\all_folder\other_projects\VideoFinder\wandb\run-20240510_030820-djdz9frt\files\config.yaml
+2024-05-10 03:08:22,840 INFO    SenderThread:9756 [dir_watcher.py:finish():388] scan: c:\Users\eriki\OneDrive\Documents\all_folder\other_projects\VideoFinder\wandb\run-20240510_030820-djdz9frt\files
+2024-05-10 03:08:22,840 INFO    SenderThread:9756 [dir_watcher.py:finish():402] scan save: c:\Users\eriki\OneDrive\Documents\all_folder\other_projects\VideoFinder\wandb\run-20240510_030820-djdz9frt\files\config.yaml config.yaml
+2024-05-10 03:08:22,840 INFO    SenderThread:9756 [dir_watcher.py:finish():402] scan save: c:\Users\eriki\OneDrive\Documents\all_folder\other_projects\VideoFinder\wandb\run-20240510_030820-djdz9frt\files\requirements.txt requirements.txt
+2024-05-10 03:08:22,842 INFO    SenderThread:9756 [dir_watcher.py:finish():402] scan save: c:\Users\eriki\OneDrive\Documents\all_folder\other_projects\VideoFinder\wandb\run-20240510_030820-djdz9frt\files\wandb-metadata.json wandb-metadata.json
+2024-05-10 03:08:22,842 INFO    SenderThread:9756 [dir_watcher.py:finish():402] scan save: c:\Users\eriki\OneDrive\Documents\all_folder\other_projects\VideoFinder\wandb\run-20240510_030820-djdz9frt\files\wandb-summary.json wandb-summary.json
+2024-05-10 03:08:22,842 INFO    SenderThread:9756 [sender.py:transition_state():614] send defer: 10
+2024-05-10 03:08:22,845 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: poll_exit
+2024-05-10 03:08:22,845 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: defer
+2024-05-10 03:08:22,845 INFO    HandlerThread:9756 [handler.py:handle_request_defer():172] handle defer: 10
+2024-05-10 03:08:22,845 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: defer
+2024-05-10 03:08:22,845 INFO    SenderThread:9756 [sender.py:send_request_defer():610] handle sender defer: 10
+2024-05-10 03:08:22,845 INFO    SenderThread:9756 [file_pusher.py:finish():172] shutting down file pusher
+2024-05-10 03:08:23,276 INFO    wandb-upload_0:9756 [upload_job.py:push():131] Uploaded file c:\Users\eriki\OneDrive\Documents\all_folder\other_projects\VideoFinder\wandb\run-20240510_030820-djdz9frt\files\config.yaml
+2024-05-10 03:08:23,364 INFO    wandb-upload_1:9756 [upload_job.py:push():131] Uploaded file c:\Users\eriki\OneDrive\Documents\all_folder\other_projects\VideoFinder\wandb\run-20240510_030820-djdz9frt\files\requirements.txt
+2024-05-10 03:08:23,364 INFO    wandb-upload_2:9756 [upload_job.py:push():131] Uploaded file c:\Users\eriki\OneDrive\Documents\all_folder\other_projects\VideoFinder\wandb\run-20240510_030820-djdz9frt\files\wandb-summary.json
+2024-05-10 03:08:23,491 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: poll_exit
+2024-05-10 03:08:23,491 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: poll_exit
+2024-05-10 03:08:23,568 INFO    Thread-15 (_thread_body):9756 [sender.py:transition_state():614] send defer: 11
+2024-05-10 03:08:23,568 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: defer
+2024-05-10 03:08:23,568 INFO    HandlerThread:9756 [handler.py:handle_request_defer():172] handle defer: 11
+2024-05-10 03:08:23,568 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: defer
+2024-05-10 03:08:23,568 INFO    SenderThread:9756 [sender.py:send_request_defer():610] handle sender defer: 11
+2024-05-10 03:08:23,568 INFO    SenderThread:9756 [file_pusher.py:join():178] waiting for file pusher
+2024-05-10 03:08:23,569 INFO    SenderThread:9756 [sender.py:transition_state():614] send defer: 12
+2024-05-10 03:08:23,569 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: defer
+2024-05-10 03:08:23,569 INFO    HandlerThread:9756 [handler.py:handle_request_defer():172] handle defer: 12
+2024-05-10 03:08:23,569 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: defer
+2024-05-10 03:08:23,569 INFO    SenderThread:9756 [sender.py:send_request_defer():610] handle sender defer: 12
+2024-05-10 03:08:23,569 INFO    SenderThread:9756 [file_stream.py:finish():614] file stream finish called
+2024-05-10 03:08:24,497 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: poll_exit
+2024-05-10 03:08:24,973 INFO    SenderThread:9756 [file_stream.py:finish():618] file stream finish is done
+2024-05-10 03:08:24,973 INFO    SenderThread:9756 [sender.py:transition_state():614] send defer: 13
+2024-05-10 03:08:24,973 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: poll_exit
+2024-05-10 03:08:24,973 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: defer
+2024-05-10 03:08:24,973 INFO    HandlerThread:9756 [handler.py:handle_request_defer():172] handle defer: 13
+2024-05-10 03:08:24,974 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: defer
+2024-05-10 03:08:24,974 INFO    SenderThread:9756 [sender.py:send_request_defer():610] handle sender defer: 13
+2024-05-10 03:08:24,974 INFO    SenderThread:9756 [sender.py:transition_state():614] send defer: 14
+2024-05-10 03:08:24,974 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: defer
+2024-05-10 03:08:24,974 INFO    HandlerThread:9756 [handler.py:handle_request_defer():172] handle defer: 14
+2024-05-10 03:08:24,974 DEBUG   SenderThread:9756 [sender.py:send():379] send: final
+2024-05-10 03:08:24,974 DEBUG   SenderThread:9756 [sender.py:send():379] send: footer
+2024-05-10 03:08:24,975 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: defer
+2024-05-10 03:08:24,975 INFO    SenderThread:9756 [sender.py:send_request_defer():610] handle sender defer: 14
+2024-05-10 03:08:24,975 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: poll_exit
+2024-05-10 03:08:24,975 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: poll_exit
+2024-05-10 03:08:24,976 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-10 03:08:24,976 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: server_info
+2024-05-10 03:08:24,976 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: get_summary
+2024-05-10 03:08:24,976 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: sampled_history
+2024-05-10 03:08:24,977 DEBUG   SenderThread:9756 [sender.py:send_request():406] send_request: server_info
+2024-05-10 03:08:25,144 DEBUG   HandlerThread:9756 [handler.py:handle_request():146] handle_request: shutdown
+2024-05-10 03:08:25,144 INFO    HandlerThread:9756 [handler.py:finish():866] shutting down handler
+2024-05-10 03:08:25,984 INFO    WriterThread:9756 [datastore.py:close():296] close: c:\Users\eriki\OneDrive\Documents\all_folder\other_projects\VideoFinder\wandb\run-20240510_030820-djdz9frt\run-djdz9frt.wandb
+2024-05-10 03:08:26,156 INFO    SenderThread:9756 [sender.py:finish():1546] shutting down sender
+2024-05-10 03:08:26,156 INFO    SenderThread:9756 [file_pusher.py:finish():172] shutting down file pusher
+2024-05-10 03:08:26,156 INFO    SenderThread:9756 [file_pusher.py:join():178] waiting for file pusher
